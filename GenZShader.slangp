@@ -1,0 +1,93 @@
+#reference "shaders_slang/retro crisis/1080p Flat/RC GDV-NTSC - NES - Dirty.slangp"
+
+// ==========================================
+// RGB & COLOR BALANCE CONTROLS
+// ==========================================
+PR = "0.050000"          // [Red Level] Adjusts the master red color balance tint
+PG = "0.050000"          // [Green Level] Adjusts the master green color balance tint
+PB = "0.050000"          // [Blue Level] Adjusts the master blue color balance tint
+AS = "0.000000"          // [Color Bleed] Adjusts color bleeding artifacts between adjacent pixels
+sat = "0.000000"         // [Saturation] Controls how vibrant or washed out colors look (0 is stock)
+
+// ==========================================
+// CRT SCREEN BRIGHTNESS & CONTRAST
+// ==========================================
+CP = "5.000000"          // [Contrast Profile] Adjusts how aggressively bright and dark parts pop
+LS = "16.000000"         // [Luminance Separation] Controls details in bright parts of the screen
+BP = "5.000000"          // [Black Point] Changes how dark the pure black levels of the game look
+CCONTR = "0.050000"      // [CRT Contrast] Controls the core contrast ratio of the simulated CRT glass
+CDETAILS = "0.000000"    // [CRT Detail Enhancement] sharpens or softens minor texture highlights
+GAMMA_INPUT = "2.300000" // [Input Gamma] Emulates the incoming display signal gamma curve
+gamma_out = "2.000000"   // [Output Gamma] Fixes how bright the screen looks on your modern monitor
+
+// ==========================================
+// EMULATED CONSOLE RESOLUTION & SIGNAL ARTIFACTS
+// ==========================================
+internal_res = "0.500000"    // [Internal Resolution Scale] Blurs or sharpens core pixel detail
+cust_artifacting = "0.000000" // [Custom NTSC Artifacts] Adds classic composite cable rainbow color noise
+cust_fringing = "0.000000"    // [Custom NTSC Fringing] Adds fuzzy/blurry color borders to objects
+ntsc_phase = "1.000000"       // [NTSC Phase Cycle] Rotates color tint fields (simulates old TV tuner tuning)
+ntsc_scale = "1.000000"       // [NTSC Scale Factor] Widens or narrows the text and sprite distortion blur
+ntsc_ring = "0.200000"        // [NTSC Ringing Artifacts] Adds ghostly halo outlines next to sharp edges
+ntsc_sharp = "-4.000000"      // [NTSC Sharpness] Controls the blurriness of raw RF/Composite signals
+
+// ==========================================
+// SCANLINE & CRT BEAM CONTROLS
+// ==========================================
+inter = "0.000000"       // [Interlacing Mode] Toggles 480i style flicker or interlaced scanning lines
+iscans = "0.200000"      // [Scanline Intensity] Controls how dark or visible the scanlines are
+hiscan = "1.000000"      // [High-Res Scanlines] Adjusts how scanlines treat higher resolution graphics
+HSHARPNESS = "1.000000"  // [Horizontal Sharpness] How crisp the display looks from left to right
+SIGMA_HOR = "1.075000"   // [Horizontal Blur Radius] Spreads horizontal pixels slightly for a smoother look
+S_SHARP = "0.000000"     // [Subpixel Sharpness] Sharpens the individual RGB sub-components
+HSHARP = "1.100000"      // [High Sharpening] Pushes edges to look extra distinct
+MAXS = "0.170000"        // [Maximum Scanline Thickness] Limits how thick dark scanlines can grow
+spike = "0.000000"       // [Beam Spike Effect] Simulates old electron guns over-shooting bright spots
+gsl = "1.000000"         // [Global Scanline Logic] Overarching switch for how scanlines calculate math
+scanline1 = "-20.000000" // [Dark Scanline Depth] Adjusts dark line behavior in dark areas
+scanline2 = "0.000000"   // [Bright Scanline Depth] Adjusts dark line behavior in bright areas
+beam_min = "0.250000"    // [Minimum Electron Beam Size] Sets minimum thickness for the glowing light beams
+beam_max = "0.200000"    // [Maximum Electron Beam Size] Sets maximum thickness for the glowing light beams
+beam_size = "0.300000"   // [Master Beam Size] Controls the overall width of the emulated light beam
+scangamma = "0.500000"   // [Scanline Gamma Modifier] Changes the brightness slope inside scanlines
+
+// ==========================================
+// MISC SPECIAL EFFECTS & SUB-MASKS
+// ==========================================
+c_shape = "0.050000"     // [CRT Phosphor Shape] Alters the layout of virtual glass sub-elements
+sborder = "0.250000"     // [Screen Border Width] Dark outer border padding size around the image
+barspeed = "5.000000"    // [Scrolling Scanbar Speed] Speeds up or slows down subtle retro rolling hum bars
+shadowMask = "-1.000000" // [CRT Shadow Mask Type] Switches grid patterns (Aperture Grille, Slot Mask, Trinitron)
+maskstr = "-0.500000"    // [Shadow Mask Strength] Determines how visible the tiny phosphorus pixels are
+maskboost = "1.000000"   // [Shadow Mask Brightness Boost] Keeps the game bright despite a dark mask overlay
+mask_zoom = "0.000000"   // [Shadow Mask Zoom Scale] Makes the TV grid mask texture bigger or smaller
+pr_scan = "0.200000"     // [Phosphor Persistence Scan] Controls screen ghosting or light trails left behind
+
+// ==========================================
+// CRT SCREEN CURVATURE
+// ==========================================
+CRT_CURVATURE = "1.000000" // [Curvature Toggle] Set to 1.0 to turn on screen curve, 0.0 for perfectly flat
+WARP_X = "0.030000"        // [Horizontal Curve Amount] Sets how much the screen bows out on the sides
+WARP_Y = "0.040000"        // [Vertical Curve Amount] Sets how much the screen bows out at the top/bottom
+CORNER_ROUNDR = "0.050000" // [Corner Rounding Radius] Rounds out the very outer tips of the curved glass
+
+// ==========================================
+// SUBTLE CORNER GRADIENT (VIGNETTE)
+// ==========================================
+VIGNETTE_TOGGLE = "1.000000"   // [Vignette Toggle] Set to 1.0 to turn on corner shading, 0.0 to turn off
+VIGNETTE_STRENGTH = "0.150000" // [Vignette Intensity] Makes the corners darker or lighter (Keep low!)
+VIGNETTE_POWER = "2.000000"    // [Vignette Falloff] Controls how smoothly the darkness fades into the center
+
+// ==========================================
+// EDGE SHARP & BLUR CONTROLS
+// ==========================================
+EDGE_SHARP = "1.000000"    // [Edge Sharpness Intensity] Higher values make text and outlines pop and crisp up
+EDGE_BLUR = "0.000000"     // [Edge Blur Radius] Higher values soften harsh pixel steps for a smoother blend
+
+// ==========================================
+// NEW FEATURE: CRT SCREEN SHAKE & JITTER CONTROLS
+// ==========================================
+SCREEN_SHAKE_TOGGLE = "0.000000" // [Screen Shake Toggle] Set to 1.0 to turn on signal shaking, 0.0 to turn off
+SHAKE_SPEED = "10.000000"        // [Shake Frequency/Speed] Controls how rapidly the screen vibrates or updates
+SHAKE_X = "0.002000"             // [Horizontal Shake Width] Set distance the screen shakes left-to-right
+SHAKE_Y = "0.002000"             // [Vertical Shake Height] Set distance the screen shakes up-and-down
